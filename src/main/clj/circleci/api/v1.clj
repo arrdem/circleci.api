@@ -88,3 +88,16 @@
   [config vcs username project build-num]
   (do-request config "/project/%s/%s/%s/%s/artifacts"
               vcs username project build-num))
+
+(defn artifact
+  "Retrieve a build artifact.
+
+  See `#'build-artifacts` for a way to enumerate the artifacts of a build.
+
+  Because of the possibility of large build artifacts (archives, images and the like) build
+  artifacts are returned as streams. No attempt to decode them is made."
+  [{:keys [token] :as config} artifact-url]
+  (-> (http/get artifact-url
+                {:query-params {"circle-token" token}
+                 :as :stream})
+      :body))
