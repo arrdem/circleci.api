@@ -1,5 +1,6 @@
 (defproject me.arrdem/circleci.api "_"
   :description "A quick and dirty CircleCI REST API driver."
+  :url "https://github.com/arrdem/circleci.api"
 
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
